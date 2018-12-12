@@ -5,7 +5,6 @@ define([
 ], function(datos, hashing) {
 
     let mapa = {};
-<<<<<<< HEAD
     let arcos = [
         []
     ];
@@ -15,13 +14,6 @@ define([
         [-1, 0, 1, 0],
         [0, -1, 0, 1],
         [1, 0, -1, 0]
-=======
-    let matrizAdyacencia = [
-        [0, 1, 0,1],
-        [1, 0, 1, 0],
-        [0, 1, 0, 1],
-        [1, 0, 1, 0]
->>>>>>> 2f161c6c84fea559defb81b4f6060a71dcac4492
     ];
 
     let matrizDeCostos = [
