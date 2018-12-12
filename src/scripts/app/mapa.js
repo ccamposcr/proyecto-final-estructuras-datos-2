@@ -19,14 +19,13 @@ define([
             if (value[0][idUbicacion] != undefined) {
                 adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
                     value[0][idUbicacion].tiempo,
-                    value[0][idUbicacion].distancia))
+                    value[0][idUbicacion].distancia));
             }
             if (value[idUbicacion][0] != undefined) {
-                adyacentes.push(`
-                Ubicación: ${datos.ubicaciones[idUbicacion].ubicacion}
-                Tiempo: ${value[idUbicacion][0].tiempo}
-                Distancia: ${value[idUbicacion][0].distancia}
-            `)
+                adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
+                    value[idUbicacion][0].tiempo,
+                    value[idUbicacion][0].distancia));
+
             }
         });
         return adyacentes;
