@@ -23,8 +23,24 @@ define([
         [0, 6, 0, 8],
         [6, 0, 8, 0]
     ];
+    
+    let initMatriz = () => {
+        let i, j, matriz = [];
 
-    let caminos = [];
+        for( i = 0; i < matrizDePesos.length; i++){
+            matriz[i] = new Array(matrizDePesos[0].length);
+        }
+
+        for( i = 0; i < matrizDePesos.length; i++ ){
+            for( j = 0; j < matrizDePesos[0].length; j++ ){
+                matriz[i][j] = 0;
+            }
+        }
+
+        return matriz;
+    };
+
+    let caminos = initMatriz();
     
     let vertices = ['LIM','CMX','SCL','AQP'];
 
@@ -56,52 +72,56 @@ define([
                 Distancia: ${distancia}`;
     }
 
-	let buscarCaminoMinimo = (origen, destino) => {
-        let verticeOrigen = vertices.findIndex(k => k== origen);
-        let verticeDestino = vertices.findIndex(k => k== destino);
-        console.log(verticeOrigen);
-        console.log(verticeDestino);
+    let buscarCaminoMinimo = (origen, destino) => {
+        let verticeOrigen = vertices.findIndex(k => k == origen);
+        let verticeDestino = vertices.findIndex(k => k == destino);
+        if( verticeOrigen >= 0 &&  verticeDestino >= 0){
+            buscarCaminoMinRecursivo(verticeOrigen, verticeDestino);
+        }
+    }
 
-     
-        var k;
-        var c = '';
-        k = p[i][j];
-        if (k==0)
+	let buscarCaminoMinRecursivo = (origen, destino) => {
+        let k;
+        let c = '';
+        k = caminos[origen][destino];
+        if (k == 0){
             return;
-        caminos(i,k);
-        cout<<k;
-        cout<<c;
-        getch();
-        caminos(k,j);
-        
+        }
+        buscarCaminoMinRecursivo(origen, k);
+        //cout << k;
+        console.log(k);
+        console.log(c);
+        //cout << c;
+        buscarCaminoMinRecursivo(k, destino);
     };
 
     let calcularCaminos = () => {
         let i, j, k;
-        var array = [];
+        let matrizTmp = initMatriz();
 
-        for (i = 1; i <= array.length; i++){
-            for (j = 1; j <= array.length; j++){
-                array[i][j] = matrizDePesos[i][j];
+        for (i = 0; i < matrizTmp.length; i++){
+            for (j = 0; j < matrizTmp.length; j++){
+                matrizTmp[i][j] = matrizDePesos[i][j];
                 caminos[i][j] = 0;
             }             
         } 
 
-        for (i = 1; i <= array.length; i++){
-            array[i][i] = 0;
+        for (i = 0; i < matrizTmp.length; i++){
+            matrizTmp[i][i] = 0;
         } 
 
-        for (k = 1;k <= array.length; k++){
-            for (i = 1;i <= array.length; i++){
-                for (j = 1; j <= array.length; j++){
-                    if ((array[i][k] + array[k][j]) < (array[i][j]))
+        for (k = 0; k < matrizTmp.length; k++){
+            for (i = 0; i < matrizTmp.length; i++){
+                for (j = 0; j < matrizTmp.length; j++){
+                    if ((matrizTmp[i][k] + matrizTmp[k][j]) < (matrizTmp[i][j]))
                     {
-                        array[i][j] = array[i][k] + array[k][j];
+                        matrizTmp[i][j] = matrizTmp[i][k] + matrizTmp[k][j];
                         caminos[i][j] = k;
                     }
                 }
             }
         }
+        console.log(caminos);
     };
 
     let buscarCaminoMaximo = () => {};
@@ -121,7 +141,7 @@ define([
     mapa.iniciarMapa = () => {
         //iniciarMapa();
         calcularCaminos();
-        //buscarCaminoMinimo('LIM','AQP');
+        buscarCaminoMinimo('CMX','SCL');
     };
     
     //https://cdn-images-1.medium.com/max/1600/1*K_dtpNyaJ41uOEW_mHvW4A.png
