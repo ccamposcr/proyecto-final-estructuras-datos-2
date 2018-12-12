@@ -81,7 +81,7 @@ define([
         var array = [];
 
         for (i = 1; i <= array.length; i++){
-            for (j = 1; j <= 7; j++){
+            for (j = 1; j <= array.length; j++){
                 array[i][j] = matrizDePesos[i][j];
                 caminos[i][j] = 0;
             }             
@@ -115,13 +115,13 @@ define([
     };
 
     let iniciarMatriz = () => {
-        datos.inicar();
+        datos.iniciar();
     };
 
     mapa.iniciarMapa = () => {
-        iniciarMapa();
+        //iniciarMapa();
         calcularCaminos();
-        buscarCaminoMinimo('LIM','AQP');
+        //buscarCaminoMinimo('LIM','AQP');
     };
     
     //https://cdn-images-1.medium.com/max/1600/1*K_dtpNyaJ41uOEW_mHvW4A.png
@@ -132,7 +132,6 @@ define([
     mapa.buscarAdyacentes = buscarAdyacentes;
     mapa.datos = datos;
 	
-    //buscarCaminoMinimo('LIM','CMX');
 	
 	return mapa;
 });
