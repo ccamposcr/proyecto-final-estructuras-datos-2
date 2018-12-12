@@ -8,7 +8,7 @@ define([''], function() {
 
     gestor.iniciar = () => {
         require(['apiGoogle', 'mapa'], function(api, mapa) {
-
+            mapa.iniciarMapa();
         });
     }
 
