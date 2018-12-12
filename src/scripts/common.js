@@ -16,16 +16,9 @@ requirejs.config({
     },
     shim: {
         "bootstrap": ['jquery', 'popperjs']
-            // backbone: {
-            //     deps: ['jquery', 'underscore'],
-            //     exports: 'Backbone'
-            // },
-            // underscore: {
-            //     exports: '_'
-            // }
     }
 });
-require(["gestor"], function(iniciar) {
+require(["gestor"], function(func) {
 
-    iniciar.onReady();
+    func.iniciar();
 });
