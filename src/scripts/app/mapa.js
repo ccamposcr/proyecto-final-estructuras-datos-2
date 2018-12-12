@@ -5,24 +5,18 @@ define([
 ], function(datos, hashing) {
 
     let mapa = {};
+
+    let arcos = [
+        []
+    ];
+
     let matrizAdyacencia = [
         [0, 1, 0, 1],
         [1, 0, 1, 0],
         [0, 1, 0, 1],
         [1, 0, 1, 0]
     ];
-    
-    let arcos = [
-        []
-    ];
 	
-	let matrizAdyacencia = [
-        [0, 1, 0,-1],
-        [-1, 0, 1, 0],
-        [0, -1, 0, 1],
-        [1, 0, -1, 0]
-    ];
-
     let matrizDePesos = [
         [0, 4, 0, 6],
         [4, 0, 6, 0],
@@ -31,7 +25,7 @@ define([
     ];
 
     let caminos = [];
-    //[0,1,2,3,4,5,6,7,8,9];
+    
     let vertices = ['LIM','CMX','SCL','AQP'];
 
     let buscarAdyacentes = (ubicacion) => {
@@ -115,26 +109,28 @@ define([
     let buscarUbicacion = (ubicacion) => {
         return hashing(ubicacion);
     };
+
     let iniciarMapa = () => {
         iniciarMatriz();
     };
+
     let iniciarMatriz = () => {
         datos.inicar();
     };
 
-    calcularCaminos();
-    buscarCaminoMinimo('LIM','AQP');
-    mapa.buscarPorUbicacion = buscarUbicacion;
-    mapa.buscarAdyacentes = buscarAdyacentes;
-    mapa.datos = datos;
     mapa.iniciarMapa = () => {
         iniciarMapa();
+        calcularCaminos();
+        buscarCaminoMinimo('LIM','AQP');
     };
     
     //https://cdn-images-1.medium.com/max/1600/1*K_dtpNyaJ41uOEW_mHvW4A.png
     //Grafo https://cdn-images-1.medium.com/max/1600/1*yAdNgmGT-g8JX7P5WB0Heg.png
 	mapa.caminoMinimo = buscarCaminoMinimo;
-	mapa.caminoMaximo = buscarCaminoMaximo;
+    mapa.caminoMaximo = buscarCaminoMaximo;
+    mapa.buscarPorUbicacion = buscarUbicacion;
+    mapa.buscarAdyacentes = buscarAdyacentes;
+    mapa.datos = datos;
 	
     //buscarCaminoMinimo('LIM','CMX');
 	
