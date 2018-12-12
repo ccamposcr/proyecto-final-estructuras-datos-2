@@ -9,7 +9,7 @@ define([''], function() {
     gestor.iniciar = () => {
         console.log('inicio');
         require(['apiGoogle', 'mapa'], function(api, mapa) {
-
+            mapa.iniciarMapa();
         });
     }
 
