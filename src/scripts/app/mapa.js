@@ -89,8 +89,8 @@ define([
         }
         buscarCaminoMinRecursivo(origen, k);
         //cout << k;
-        console.log(k);
-        console.log(c);
+        console.log('k '+ k);
+        console.log('c '+ c);
         //cout << c;
         buscarCaminoMinRecursivo(k, destino);
     };
