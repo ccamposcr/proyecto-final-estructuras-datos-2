@@ -7,4 +7,24 @@ String.prototype.hashCode = function() {
         hash = hash & hash; // Convert to 32bit integer
     }
     return Math.abs(max ? hash % max : hash);
+};
+
+class Hashing {
+    
+    crearTabla () {
+
+    }
+
+    funcionaHash() {
+
+    }
+
+    insertar() {
+
+    }
+
+    obtener() {
+
+    }
+
 }
