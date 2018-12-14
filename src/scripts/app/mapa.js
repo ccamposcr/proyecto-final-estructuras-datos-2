@@ -23,9 +23,7 @@ define([
         [4, 0, 6, Infinity],
         [Infinity, 6, 0, 8],
         [6, Infinity, 8, 0]
-    ];
-
-    let caminosMinimos = [];    
+    ];   
     
     let vertices = ['LIM','CMX','SCL','AQP'];
 
@@ -60,9 +58,11 @@ define([
     let buscarCaminoMinimo = (origen, destino) => {
         let verticeOrigen = vertices.findIndex(k => k == origen);
         let verticeDestino = vertices.findIndex(k => k == destino);
-        caminosMinimos = algoritmos.floydWarshall(matrizDePesos);
+        let obj = algoritmos.floydWarshall(matrizDePesos)
+        let caminosMinimos = obj.array;
+        let camino = obj.camino;
         if( verticeOrigen >= 0 &&  verticeDestino >= 0){
-            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + caminosMinimos[verticeOrigen][verticeDestino]);
+            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino+ ' = ' + caminosMinimos[verticeOrigen][verticeDestino]);
         }
     }
 
@@ -82,7 +82,7 @@ define([
 
     mapa.iniciarMapa = () => {
         //iniciarMapa();
-        buscarCaminoMinimo('CMX','SCL');
+        buscarCaminoMinimo('LIM','SCL');
     };
     
     //https://cdn-images-1.medium.com/max/1600/1*K_dtpNyaJ41uOEW_mHvW4A.png

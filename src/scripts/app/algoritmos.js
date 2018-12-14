@@ -5,6 +5,7 @@ define([''], () => {
          * Matrix used for the algorithm.
          */
         let dist;
+        let camino;
         /**
          * Initialize the distance matrix.
          *
@@ -13,7 +14,7 @@ define([''], () => {
          * @return {Array} Distance matrix used for the algorithm.
          */
         let init = (graph) => {
-          let dist = [];
+          dist = [];
           let size = graph.length;
           for (let i = 0; i < size; i += 1) {
             dist[i] = [];
@@ -67,11 +68,12 @@ define([''], () => {
               for (let j = 0; j < size; j += 1) {
                 if (dist[i][j] > dist[i][k] + dist[k][j]) {
                   dist[i][j] = dist[i][k] + dist[k][j];
+                  camino = graph[i][k] + ' -> ' + graph[k][j];
                 }
               }
             }
           }
-          return dist;
+          return {"array": dist, "camino": camino};
         };
       })();
       
