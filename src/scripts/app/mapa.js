@@ -17,15 +17,15 @@ define([
         [0, 1, 0, 1],
         [1, 0, 1, 0]
     ];
-	
+
     let matrizDePesos = [
         [0, 4, Infinity, 6],
         [4, 0, 6, Infinity],
         [Infinity, 6, 0, 8],
         [6, Infinity, 8, 0]
-    ];   
-    
-    let vertices = ['LIM','CMX','SCL','AQP'];
+    ];
+
+    let vertices = ['LIM', 'CMX', 'SCL', 'AQP'];
 
     let buscarAdyacentes = (ubicacion) => {
         let idUbicacion = (datos.ubicaciones.map(e => e.ubicacion)).indexOf(ubicacion);
@@ -61,39 +61,39 @@ define([
         let obj = algoritmos.floydWarshall(matrizDePesos)
         let caminosMinimos = obj.array;
         let camino = obj.camino;
-        if( verticeOrigen >= 0 &&  verticeDestino >= 0){
-            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino+ ' = ' + caminosMinimos[verticeOrigen][verticeDestino]);
+        if (verticeOrigen >= 0 && verticeDestino >= 0) {
+            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino + ' = ' + caminosMinimos[verticeOrigen][verticeDestino]);
         }
     }
 
     let buscarCaminoMaximo = () => {};
-	
+
     let buscarUbicacion = (ubicacion) => {
         return hashing(ubicacion);
     };
 
-    let iniciarMapa = () => {
-        iniciarMatriz();
+    let iniciarMapa = (tiempoDistanciaList) => {
+        iniciarMatriz(tiempoDistanciaList);
     };
 
-    let iniciarMatriz = () => {
-        datos.iniciar();
+    let iniciarMatriz = (tiempoDistanciaList) => {
+        datos.iniciar(tiempoDistanciaList);
     };
 
-    mapa.iniciarMapa = () => {
-        //iniciarMapa();
-        buscarCaminoMinimo('LIM','SCL');
+    mapa.iniciarMapa = (tiempoDistanciaList) => {
+        iniciarMapa(tiempoDistanciaList);
+        // buscarCaminoMinimo('LIM','SCL');
     };
-    
+
     //https://cdn-images-1.medium.com/max/1600/1*K_dtpNyaJ41uOEW_mHvW4A.png
     //Grafo https://cdn-images-1.medium.com/max/1600/1*yAdNgmGT-g8JX7P5WB0Heg.png
-	mapa.caminoMinimo = buscarCaminoMinimo;
+    mapa.caminoMinimo = buscarCaminoMinimo;
     mapa.caminoMaximo = buscarCaminoMaximo;
     mapa.buscarPorUbicacion = buscarUbicacion;
     mapa.buscarAdyacentes = buscarAdyacentes;
     mapa.datos = datos;
-    
-	
-	
-	return mapa;
+
+
+
+    return mapa;
 });

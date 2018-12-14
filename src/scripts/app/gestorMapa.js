@@ -9,9 +9,10 @@ define([''], function() {
     gestor.iniciar = () => {
         console.log('inicio');
         require(['apiGoogle', 'mapa'], function(api, mapa) {
-            mapa.iniciarMapa();
+            let tiempoDistanciaList = api.obtenerTiempoDistancia(mapa.datos.ubicaciones, mapa.datos.conexiones);
+            mapa.iniciarMapa(tiempoDistanciaList);
         });
     }
 
     return gestor;
-});
+})
