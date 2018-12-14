@@ -60,11 +60,9 @@ define([
     let buscarCaminoMinimo = (origen, destino) => {
         let verticeOrigen = vertices.findIndex(k => k == origen);
         let verticeDestino = vertices.findIndex(k => k == destino);
-        console.log(verticeOrigen);
-        console.log(verticeDestino);
         caminosMinimos = algoritmos.floydWarshall(matrizDePesos);
         if( verticeOrigen >= 0 &&  verticeDestino >= 0){
-            console.log(caminosMinimos);
+            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + caminosMinimos[verticeOrigen][verticeDestino]);
         }
     }
 
