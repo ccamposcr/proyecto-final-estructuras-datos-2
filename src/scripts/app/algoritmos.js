@@ -64,7 +64,6 @@ define([''], () => {
          */
         return (graph) => {
           dist = init(graph);
-          //console.log(dist);
           let size = graph.length;
           for (let k = 0; k < size; k += 1) {
             for (let i = 0; i < size; i += 1) {

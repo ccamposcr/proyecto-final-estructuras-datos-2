@@ -1,12 +1,13 @@
-define(['googleMaps'], () => {
+define(['googleMaps', 'datos'], (googleMaps, datos) => {
    var map;
    //ubicaciones[i].latitud, ubicaciones[i].longitud
    let api = {};
+   let markers = [];
 
-   api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
+   /*api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
     return `Ubicación: ${ubicaciones}
             Conexiones: ${conexiones}`;
-   };
+   };*/
    
    /*createMarker
    getMarker
@@ -16,22 +17,25 @@ define(['googleMaps'], () => {
    // Initialize and add the map
    api.initMap = () => {
 
-       let cenfotec = {
-           lat: 9.932316199999999,
-           lng: -84.03103390000001
-       };
 
        let map = new google.maps.Map(
            document.getElementById('map'), {
-               zoom: 15,
-               center: cenfotec
+               zoom: 8,
+               center: {
+                    "lat": 9.934739,
+                    "lng": -84.087502
+                }
            });
 
-       let marker = new google.maps.Marker({
-           position: cenfotec,
-           map: map
-       });
-
+        for(let i = 0; i < datos.ubicaciones.length; i++){
+            markers.push(new google.maps.Marker({
+                position: {
+                    "lat": datos.ubicaciones[i].latitud,
+                    "lng": datos.ubicaciones[i].longitud
+                },
+                map: map
+            }));
+        }
    }
    
    return api;
