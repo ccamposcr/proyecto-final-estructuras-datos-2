@@ -28,31 +28,49 @@ define([
     let vertices = ['LIM', 'CMX', 'SCL', 'AQP'];
 
     let buscarAdyacentes = (ubicacion) => {
+        console.table(arcos);
+        debugger;
         let idUbicacion = (datos.ubicaciones.map(e => e.ubicacion)).indexOf(ubicacion);
         let adyacentes = [];
         if (idUbicacion == -1) {
             return 'No existe la ubicación ingresada';
         }
-        datos.matrizAdyacencia.forEach(value => {
-            if (value[0][idUbicacion] != undefined) {
-                adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
-                    value[0][idUbicacion].tiempo,
-                    value[0][idUbicacion].distancia));
-            }
-            if (value[idUbicacion][0] != undefined) {
-                adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
-                    value[idUbicacion][0].tiempo,
-                    value[idUbicacion][0].distancia));
 
+        for (let i = 0; i < arcos.length; i++) {
+            if (arcos[i][idUbicacion] != undefined) {
+                adyacentes.push(getDatoEnFormato(`De ${datos.ubicaciones[i].ubicacion} a ${datos.ubicaciones[idUbicacion].ubicacion}`,
+                    arcos[i][idUbicacion].tiempo,
+                    arcos[i][idUbicacion].distancia));
             }
-        });
+            if (arcos[idUbicacion][i] != undefined) {
+                adyacentes.push(getDatoEnFormato(`De ${datos.ubicaciones[idUbicacion].ubicacion} a ${datos.ubicaciones[i].ubicacion}`,
+                    arcos[idUbicacion][i].tiempo,
+                    arcos[idUbicacion][i].distancia));
+            }
+
+        }
+        // arcos.forEach(value => {
+        //     if (value[0][idUbicacion] != undefined) {
+        //         adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
+        //             value[0][idUbicacion].tiempo,
+        //             value[0][idUbicacion].distancia));
+        //     }
+        //     if (value[idUbicacion][0] != undefined) {
+        //         adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
+        //             value[idUbicacion][0].tiempo,
+        //             value[idUbicacion][0].distancia));
+
+        //     }
+        // });
         return adyacentes;
     };
 
     let getDatoEnFormato = (ubicacion, tiempo, distancia) => {
-        return `Ubicación: ${ubicacion}
-                Tiempo: ${tiempo}
-                Distancia: ${distancia}`;
+        return {
+            'Ubicación': ubicacion,
+            'Tiempo': tiempo,
+            'Distancia': distancia
+        }
     }
 
     let buscarCaminoMinimo = (origen, destino) => {
@@ -72,16 +90,9 @@ define([
         return hashing(ubicacion);
     };
 
-    let iniciarMapa = (tiempoDistanciaList) => {
-        iniciarMatriz(tiempoDistanciaList);
-    };
-
-    let iniciarMatriz = (tiempoDistanciaList) => {
-        datos.iniciar(tiempoDistanciaList);
-    };
 
     mapa.iniciarMapa = (tiempoDistanciaList) => {
-        iniciarMapa(tiempoDistanciaList);
+        arcos = datos.iniciar(tiempoDistanciaList);
         // buscarCaminoMinimo('LIM','SCL');
     };
 
