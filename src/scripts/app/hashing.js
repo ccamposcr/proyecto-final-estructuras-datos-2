@@ -1,5 +1,7 @@
 define(['datos'], () => {
     
+    let hash = {};
+
     String.prototype.hashCode = function () {
         var hash = 0;
         if (!this.length) return hash;
@@ -31,5 +33,7 @@ define(['datos'], () => {
 
     }
     
+    return hash;
+
 });
 
