@@ -3,7 +3,7 @@ define([''], function() {
     const divMapaId = '#';
 
     let inicializarMapa = () => {
-
+      
     }
 
     gestor.iniciar = () => {

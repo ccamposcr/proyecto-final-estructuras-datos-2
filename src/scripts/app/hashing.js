@@ -1,30 +1,35 @@
-String.prototype.hashCode = function() {
-    var hash = 0;
-    if (!this.length) return hash;
-    for (i = 0; i < this.length; i++) {
-        char = this.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash; // Convert to 32bit integer
-    }
-    return Math.abs(max ? hash % max : hash);
-};
-
-class Hashing {
+define(['datos'], () => {
     
-    crearTabla () {
+    String.prototype.hashCode = function () {
+        var hash = 0;
+        if (!this.length) return hash;
+        for (i = 0; i < this.length; i++) {
+            char = this.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return Math.abs(max ? hash % max : hash);
+    };
+
+    class hashing {
+
+        crearTabla() {
+
+        }
+
+        funcionaHash() {
+
+        }
+
+        insertar() {
+
+        }
+
+        obtener() {
+
+        }
 
     }
+    
+});
 
-    funcionaHash() {
-
-    }
-
-    insertar() {
-
-    }
-
-    obtener() {
-
-    }
-
-}
