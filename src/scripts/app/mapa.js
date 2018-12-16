@@ -37,31 +37,14 @@ define([
         }
 
         for (let i = 0; i < arcos.length; i++) {
-            if (arcos[i][idUbicacion] != Infinity) {
-                adyacentes.push(getDatoEnFormato(`De ${datos.ubicaciones[i].ubicacion} a ${datos.ubicaciones[idUbicacion].ubicacion}`,
-                    arcos[i][idUbicacion].tiempo,
-                    arcos[i][idUbicacion].distancia));
-            }
+
             if (arcos[idUbicacion][i] != Infinity) {
-                adyacentes.push(getDatoEnFormato(`De ${datos.ubicaciones[idUbicacion].ubicacion} a ${datos.ubicaciones[i].ubicacion}`,
+                adyacentes.push(getDatoEnFormato(`Destino: ${datos.ubicaciones[i].ubicacion}`,
                     arcos[idUbicacion][i].tiempo,
                     arcos[idUbicacion][i].distancia));
             }
 
         }
-        // arcos.forEach(value => {
-        //     if (value[0][idUbicacion] != undefined) {
-        //         adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
-        //             value[0][idUbicacion].tiempo,
-        //             value[0][idUbicacion].distancia));
-        //     }
-        //     if (value[idUbicacion][0] != undefined) {
-        //         adyacentes.push(getDatoEnFormato(datos.ubicaciones[idUbicacion].ubicacion,
-        //             value[idUbicacion][0].tiempo,
-        //             value[idUbicacion][0].distancia));
-
-        //     }
-        // });
         return adyacentes;
     };
 
