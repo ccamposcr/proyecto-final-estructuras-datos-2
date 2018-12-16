@@ -9,6 +9,7 @@ requirejs.config({
         "mapa": "scripts/app/mapa",
         "hashing": "scripts/app/hashing",
         "apiGoogle": "scripts/app/apiGoogle",
+        "algoritmos": "scripts/app/algoritmos",
         "googleMaps": "https://maps.googleapis.com/maps/api/js?key=AIzaSyAYDiiPeMSVqarqP8kPOnYpXTVM_2yC3TU&callback=initMap",
         "jquery": "https://code.jquery.com/jquery-3.3.1.slim.min.js",
         "popper": "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",

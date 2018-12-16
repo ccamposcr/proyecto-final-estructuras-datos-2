@@ -34,7 +34,7 @@ define(['clases'], () => {
         [7, 2]
     ];
 
-
+    // Este listInfo lo que contiene es el tiempo y distancia de cada nodo
     datos.iniciar = (listInfo) => {
         conexiones.forEach((conexion, index, array) => {
             arcos[conexion[0]][conexion[1]] = new arcos(listInfo[index][0], listInfo[index][1]);
