@@ -5,18 +5,28 @@ define(['mapa'], () => {
 
    api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
     return `Ubicación: ${ubicaciones}
-                Conexiones: ${conexiones}`;
+            Conexiones: ${conexiones}`;
    };
-
+   
+   // Initialize and add the map
    function initMap() {
-       map = new google.maps.Map(document.getElementById('map'), {
-           center: {
-               lat: 9.9323162,
-               lng: -84.0332226
-           },
-           zoom: 8
+       // The location of Uluru
+       var cenfotec = {
+           lat: 9.932316199999999,
+           lng: -84.03103390000001
+       };
+       // The map, centered at Uluru
+       var map = new google.maps.Map(
+           document.getElementById('map'), {
+               zoom: 30,
+               center: cenfotec
+           });
+       // The marker, positioned at Uluru
+       var marker = new google.maps.Marker({
+           position: cenfotec,
+           map: map
        });
-   };
+   }
    
    return api;
 
