@@ -1,13 +1,13 @@
 define(['googleMaps', 'datos'], (googleMaps, datos) => {
 
-   let api = {};
-   let markers = [];
-   let map;
+    let api = {},
+        markers = [],
+        map;
 
-   api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
+    api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
     /*return `Ubicación: ${ubicaciones}
             Conexiones: ${conexiones}`;*/
-   };
+    };
 
     api.dibujarConexiones = (ubicaciones, conexiones) => {
         for(let i = 0; i < ubicaciones.length; i++){
@@ -19,7 +19,7 @@ define(['googleMaps', 'datos'], (googleMaps, datos) => {
                 map: map
             }));
         }
-   };
+    };
    
     // Initialize and add the map
     api.initMap = () => {
@@ -33,9 +33,9 @@ define(['googleMaps', 'datos'], (googleMaps, datos) => {
            });
         api.obtenerTiempoDistancia(datos.ubicaciones, datos.conexiones);
         api.dibujarConexiones(datos.ubicaciones, datos.conexiones);
-   }
+    }
    
-   return api;
+    return api;
 
 });
 
