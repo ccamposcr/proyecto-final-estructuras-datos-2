@@ -4,6 +4,11 @@ class Nodo {
         this.latitud = pLatitud;
         this.longitud = pLongitud;
     }
+    toString() {
+        return `Ubicacion: ${this.ubicacion}
+                Latitud: ${this.latitud}
+                Longuitud: ${this.longitud}`
+    }
 }
 
 class Arco {
