@@ -57,10 +57,9 @@ define([
     }
 
     let buscarCaminoMinimo = (origen, destino) => {
-        let verticeOrigen = datos.ubicaciones.findIndex(k => k.ubicaciones == origen && console.log(k));
-        let verticeDestino = datos.ubicaciones.findIndex(k => k.ubicaciones == destino);
+        let verticeOrigen = datos.ubicaciones.findIndex(k => k.ubicacion == origen);
+        let verticeDestino = datos.ubicaciones.findIndex(k => k.ubicacion == destino);
 
-        debugger;
         let obj = algoritmos.floydWarshall(matrizDePesos)
         let caminosMinimos = obj.array;
         let camino = obj.camino;
