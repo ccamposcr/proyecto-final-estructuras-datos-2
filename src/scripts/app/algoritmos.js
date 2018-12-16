@@ -16,15 +16,17 @@ define([''], () => {
         let init = (graph) => {
           dist = [];
           let size = graph.length;
+          let avgDistance = 0;
           for (let i = 0; i < size; i += 1) {
             dist[i] = [];
             for (let j = 0; j < size; j += 1) {
+              avgDistance = graph[i][j].tiempo * graph[i][j].distancia;
               if (i === j) {
                 dist[i][j] = 0;
-              } else if (!isFinite(graph[i][j])) {
+              } else if (!isFinite(avgDistance)) {
                 dist[i][j] = Infinity;
               } else {
-                dist[i][j] = graph[i][j];
+                dist[i][j] = avgDistance;
               }
             }
           }
@@ -62,13 +64,14 @@ define([''], () => {
          */
         return (graph) => {
           dist = init(graph);
+          //console.log(dist);
           let size = graph.length;
           for (let k = 0; k < size; k += 1) {
             for (let i = 0; i < size; i += 1) {
               for (let j = 0; j < size; j += 1) {
                 if (dist[i][j] > dist[i][k] + dist[k][j]) {
                   dist[i][j] = dist[i][k] + dist[k][j];
-                  camino = graph[i][k] + ' -> ' + graph[k][j];
+                  camino = '[Tiempo - '+ graph[i][k].tiempo + ' , Distancia - ' + graph[i][k].distancia + '] ----> ' + '[Tiempo - ' + graph[k][j].tiempo + ' , Distancia - ' + graph[k][j].distancia + ']';
                 }
               }
             }

@@ -44,7 +44,7 @@ define([
         let caminosMinimos = obj.array;
         let camino = obj.camino;
         if (verticeOrigen >= 0 && verticeDestino >= 0) {
-            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino + ' = ' + caminosMinimos[verticeOrigen][verticeDestino]);
+            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino + ' Sumatoria del Camino = ' + caminosMinimos[verticeOrigen][verticeDestino]);
         }
     }
 
@@ -54,10 +54,9 @@ define([
         return hashing(ubicacion);
     };
 
-
     mapa.iniciarMapa = (tiempoDistanciaList) => {
         arcos = datos.iniciar(tiempoDistanciaList);
-        buscarCaminoMinimo('Limon','Guanacaste');
+        buscarCaminoMinimo('Limon','Cartago');
     };
 
     mapa.caminoMinimo = buscarCaminoMinimo;
@@ -65,8 +64,6 @@ define([
     mapa.buscarPorUbicacion = buscarUbicacion;
     mapa.buscarAdyacentes = buscarAdyacentes;
     mapa.datos = datos;
-
-
 
     return mapa;
 });
