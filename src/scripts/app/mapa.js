@@ -40,11 +40,11 @@ define([
         let verticeOrigen = datos.ubicaciones.findIndex(k => k.ubicacion == origen);
         let verticeDestino = datos.ubicaciones.findIndex(k => k.ubicacion == destino);
 
-        let obj = algoritmos.floydWarshall(datos.matrizAdyacencia)
+        let obj = algoritmos.floydWarshall(arcos)
         let caminosMinimos = obj.array;
         let camino = obj.camino;
         if (verticeOrigen >= 0 && verticeDestino >= 0) {
-            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino + ' Sumatoria del Camino = ' + caminosMinimos[verticeOrigen][verticeDestino]);
+            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino + ' Valor del Camino = ' + caminosMinimos[verticeOrigen][verticeDestino]);
         }
     }
 
@@ -56,7 +56,7 @@ define([
 
     mapa.iniciarMapa = (tiempoDistanciaList) => {
         arcos = datos.iniciar(tiempoDistanciaList);
-        buscarCaminoMinimo('Limon','Cartago');
+        buscarCaminoMinimo('Limon', 'Cartago');
     };
 
     mapa.caminoMinimo = buscarCaminoMinimo;

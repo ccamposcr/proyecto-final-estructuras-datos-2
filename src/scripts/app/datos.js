@@ -52,6 +52,5 @@ define(['clases'], () => {
 
     datos.ubicaciones = ubicaciones;
     datos.conexiones = conexiones;
-    datos.matrizAdyacencia = arcos;
     return datos;
 });
