@@ -42,6 +42,11 @@ define(['clases'], () => {
 
     let inicializarArcos = () => {
         // arcos = (new Array(ubicaciones.length)).fill((new Array(ubicaciones.length)).fill(undefined));
+        // arcos = [].fill.call({ length: ubicaciones.length }, []);
+        // console.log(arcos);
+        // for (let i = 0; i < arcos.length; i++) {
+        //     arcos[i].fill.call({ length: ubicaciones.length }, Infinity);
+        // }
         for (let x = 0; x < ubicaciones.length; x++) {
             arcos[x] = [];
             for (let y = 0; y < ubicaciones.length; y++) {

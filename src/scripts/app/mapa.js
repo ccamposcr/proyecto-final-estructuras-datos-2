@@ -6,10 +6,9 @@ define([
 ], function(datos, hashing, clases, algoritmos) {
 
     let mapa = {};
+    let hash;
 
     let buscarAdyacentes = (ubicacion) => {
-        console.table(arcos);
-        debugger;
         let idUbicacion = (datos.ubicaciones.map(e => e.ubicacion)).indexOf(ubicacion);
         let adyacentes = [];
         if (idUbicacion == -1) {
@@ -51,11 +50,13 @@ define([
     let buscarCaminoMaximo = () => {};
 
     let buscarUbicacion = (ubicacion) => {
-        return hashing(ubicacion);
+        return hash.obtener(ubicacion);
     };
 
     mapa.iniciarMapa = (tiempoDistanciaList) => {
         arcos = datos.iniciar(tiempoDistanciaList);
+        hash = new Hashing(datos.ubicaciones, "ubicacion");
+        console.log(hash);
         buscarCaminoMinimo('Limon', 'Cartago');
     };
 

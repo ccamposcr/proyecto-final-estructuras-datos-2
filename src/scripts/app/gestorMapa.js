@@ -30,6 +30,9 @@ define([''], function() {
             api.initMap();
             mapa.iniciarMapa(tiempoDistancia);
             console.table(mapa.buscarAdyacentes('Limon'));
+
+            console.log(`La busqueda fue exitosa: 
+                ${mapa.buscarPorUbicacion('Limon').toString()}`);
         });
     }
 
