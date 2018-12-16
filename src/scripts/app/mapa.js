@@ -44,7 +44,7 @@ define([
         let caminosMinimos = obj.array;
         let camino = obj.camino;
         if (verticeOrigen >= 0 && verticeDestino >= 0) {
-            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino + ' Sumatoria del Camino = ' + caminosMinimos[verticeOrigen][verticeDestino]);
+            console.log('Camino minimo de ' + origen + ' a ' + destino + ' ==> ' + camino + ' Valor del Camino = ' + caminosMinimos[verticeOrigen][verticeDestino]);
         }
     }
 
