@@ -37,12 +37,12 @@ define([
         }
 
         for (let i = 0; i < arcos.length; i++) {
-            if (arcos[i][idUbicacion] != undefined) {
+            if (arcos[i][idUbicacion] != Infinity) {
                 adyacentes.push(getDatoEnFormato(`De ${datos.ubicaciones[i].ubicacion} a ${datos.ubicaciones[idUbicacion].ubicacion}`,
                     arcos[i][idUbicacion].tiempo,
                     arcos[i][idUbicacion].distancia));
             }
-            if (arcos[idUbicacion][i] != undefined) {
+            if (arcos[idUbicacion][i] != Infinity) {
                 adyacentes.push(getDatoEnFormato(`De ${datos.ubicaciones[idUbicacion].ubicacion} a ${datos.ubicaciones[i].ubicacion}`,
                     arcos[idUbicacion][i].tiempo,
                     arcos[idUbicacion][i].distancia));

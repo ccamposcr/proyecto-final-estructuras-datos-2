@@ -45,7 +45,7 @@ define(['clases'], () => {
         for (let x = 0; x < ubicaciones.length; x++) {
             arcos[x] = [];
             for (let y = 0; y < ubicaciones.length; y++) {
-                arcos[x][y] = undefined;
+                arcos[x][y] = Infinity;
             }
         }
     }
