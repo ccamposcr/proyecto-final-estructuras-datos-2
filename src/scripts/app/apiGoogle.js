@@ -23,7 +23,7 @@ define(['googleMaps'], () => {
 
        let map = new google.maps.Map(
            document.getElementById('map'), {
-               zoom: 30,
+               zoom: 15,
                center: cenfotec
            });
 
