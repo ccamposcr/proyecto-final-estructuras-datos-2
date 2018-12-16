@@ -27,6 +27,7 @@ define([''], function() {
                 [85, 23],
                 [6987, 23]
             ];
+            api.initMap();
             mapa.iniciarMapa(tiempoDistancia);
             console.table(mapa.buscarAdyacentes('Limon'));
         });

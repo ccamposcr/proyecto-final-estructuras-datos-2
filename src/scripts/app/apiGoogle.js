@@ -1,4 +1,4 @@
-define(['mapa'], () => {
+define(['googleMaps'], () => {
    var map;
    //ubicaciones[i].latitud, ubicaciones[i].longitud
    let api = {};
@@ -14,23 +14,24 @@ define(['mapa'], () => {
    maps*/
    
    // Initialize and add the map
-   function initMap() {
+   api.initMap = () => {
 
-       var cenfotec = {
+       let cenfotec = {
            lat: 9.932316199999999,
            lng: -84.03103390000001
        };
 
-       var map = new google.maps.Map(
+       let map = new google.maps.Map(
            document.getElementById('map'), {
                zoom: 30,
                center: cenfotec
            });
 
-       var marker = new google.maps.Marker({
+       let marker = new google.maps.Marker({
            position: cenfotec,
            map: map
        });
+
    }
    
    return api;

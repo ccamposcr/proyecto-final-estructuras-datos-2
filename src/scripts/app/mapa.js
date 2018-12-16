@@ -29,7 +29,7 @@ define([
 
     let buscarAdyacentes = (ubicacion) => {
         console.table(arcos);
-        debugger;
+        //debugger;
         let idUbicacion = (datos.ubicaciones.map(e => e.ubicacion)).indexOf(ubicacion);
         let adyacentes = [];
         if (idUbicacion == -1) {
