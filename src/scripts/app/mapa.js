@@ -25,7 +25,7 @@ define([
         [6, Infinity, 8, 0]
     ];
 
-    let vertices = ['LIM', 'CMX', 'SCL', 'AQP'];
+    //let vertices = ['LIM', 'CMX', 'SCL', 'AQP'];
 
     let buscarAdyacentes = (ubicacion) => {
         console.table(arcos);
@@ -74,8 +74,10 @@ define([
     }
 
     let buscarCaminoMinimo = (origen, destino) => {
-        let verticeOrigen = vertices.findIndex(k => k == origen);
-        let verticeDestino = vertices.findIndex(k => k == destino);
+        let verticeOrigen = datos.ubicaciones.findIndex(k => k.ubicaciones == origen && console.log(k));
+        let verticeDestino = datos.ubicaciones.findIndex(k => k.ubicaciones == destino);
+
+        debugger;
         let obj = algoritmos.floydWarshall(matrizDePesos)
         let caminosMinimos = obj.array;
         let camino = obj.camino;
@@ -93,7 +95,7 @@ define([
 
     mapa.iniciarMapa = (tiempoDistanciaList) => {
         arcos = datos.iniciar(tiempoDistanciaList);
-        // buscarCaminoMinimo('LIM','SCL');
+        buscarCaminoMinimo('Limon','Guanacaste');
     };
 
     //https://cdn-images-1.medium.com/max/1600/1*K_dtpNyaJ41uOEW_mHvW4A.png
