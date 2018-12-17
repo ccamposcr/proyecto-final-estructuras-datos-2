@@ -1,12 +1,23 @@
-define(['googleMaps', 'datos'], (googleMaps, datos) => {
+define(['googleMaps', 'datos', 'jquery'], (googleMaps, datos, jquery) => {
 
     let api = {},
         markers = [],
         map;
 
     api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
-    /*return `Ubicación: ${ubicaciones}
+        let array = [],
+            puntoPartida = 0,
+            puntoLlegada = 0;
+
+        for(let j = 0; j < conexiones.length; j++){
+            puntoPartida = ubicaciones[conexiones[j][0]].ubicacion;
+            puntoLlegada = ubicaciones[conexiones[j][1]].ubicacion;
+            console.log(puntoPartida);
+            console.log(puntoLlegada);
+        }
+        /*return `Ubicación: ${ubicaciones}
             Conexiones: ${conexiones}`;*/
+         return array;
     };
 
     api.dibujarConexiones = (ubicaciones, conexiones) => {
