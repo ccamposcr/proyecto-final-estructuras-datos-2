@@ -64,22 +64,13 @@ define(["datos", "hashing", "clases", "algoritmos"], function(
     let verticeDestino = datos.ubicaciones.findIndex(
       k => k.ubicacion == destino
     );
+    let array = [];
 
-    let obj = algoritmos.floydWarshall(arcos);
-    let caminosMinimos = obj.array;
-    let camino = obj.camino;
+    let caminosMinimos = algoritmos.floydWarshall(arcos);
     if (verticeOrigen >= 0 && verticeDestino >= 0) {
-      console.log(
-        "Camino minimo de " +
-          origen +
-          " a " +
-          destino +
-          " ==> " +
-          camino +
-          " Valor del Camino = " +
-          caminosMinimos[verticeOrigen][verticeDestino]
-      );
+      array = caminosMinimos[verticeOrigen][verticeDestino];
     }
+    return array;
   };
 
   let buscarUbicacion = ubicacion => {
