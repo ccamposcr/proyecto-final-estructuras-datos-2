@@ -18,17 +18,34 @@ define([
         for (let i = 0; i < arcos.length; i++) {
 
             if (arcos[idUbicacion][i] != Infinity) {
-                adyacentes.push(getDatoEnFormato(`Destino: ${datos.ubicaciones[i].ubicacion}`,
+                adyacentes.push(getDatoEnFormato(
+                    i,
+                    `Destino: ${datos.ubicaciones[i]}`,
                     arcos[idUbicacion][i].tiempo,
                     arcos[idUbicacion][i].distancia));
             }
-
         }
-        return adyacentes;
+        return {
+            "adyacentes": adyacentes,
+            "Origen": datos.ubicaciones[idUbicacion],
+            "Conexiones": getConexionesAdyacentes(adyacentes, idUbicacion)
+        };
     };
 
-    let getDatoEnFormato = (ubicacion, tiempo, distancia) => {
+    let getConexionesAdyacentes = (adyacentes, idUbicacion) => {
+        let array = Object.values([].fill.call({ length: adyacentes.length }, [idUbicacion, 0]));
+        array.pop();
+        let arrayId = adyacentes.map(x => { return x.id });
+        for (let i = 0; i < array.length; i++) {
+            array[i] = [array[i][0], arrayId[i]];
+        }
+
+        return array;
+    }
+
+    let getDatoEnFormato = (ubicacion, tiempo, distancia, id) => {
         return {
+            'id': id,
             'Ubicación': ubicacion,
             'Tiempo': tiempo,
             'Distancia': distancia
