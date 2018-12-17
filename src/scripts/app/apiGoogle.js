@@ -1,4 +1,4 @@
-define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
+define(['googleMaps', 'datos'], (googleMaps, datos) => {
 
     let api = {},
         markers = [],
@@ -6,17 +6,11 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
         map,
         distanceService;
 
-    api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
-        let array = [],
-            puntoPartida = 0,
-            puntoLlegada = 0,
-            distancia,
+
+    let getTD = (puntoPartida, puntoLlegada) => {
+        let distancia,
             duracion;
-
-        for(let j = 0; j < conexiones.length; j++){
-            puntoPartida = ubicaciones[conexiones[j][0]].ubicacion;
-            puntoLlegada = ubicaciones[conexiones[j][1]].ubicacion;
-
+        return new Promise(resolve => {
             distanceService.getDistanceMatrix({
                 origins: [puntoPartida + ', Costa Rica'],
                 destinations: [puntoLlegada + ', Costa Rica'],
@@ -32,12 +26,27 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
                 } else {
                     distancia = response.rows[0].elements[0].distance.value;
                     duracion = response.rows[0].elements[0].duration.value;
-                    array.push([distancia, duracion]);
+                    value = new Array(distancia, duracion);
+                    resolve(value);
                 }
-            });
+            })
+
+        });
+    }
+
+    api.obtenerTiempoDistancia = async (ubicaciones, conexiones) => {
+        let array = [],
+            puntoPartida = 0,
+            puntoLlegada = 0;
+
+        for(let j = 0; j < conexiones.length; j++){
+            puntoPartida = ubicaciones[conexiones[j][0]].ubicacion;
+            puntoLlegada = ubicaciones[conexiones[j][1]].ubicacion;
+            array.push(await getTD(puntoPartida, puntoLlegada));
         }
-        return array;
+        return await array;
     };
+    
 
     let clearMarkers = (markers) => {
         for (let i = 0; i < markers.length; i++) {
@@ -105,9 +114,6 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
            });
 
         distanceService = new google.maps.DistanceMatrixService();
-        //TODO: Eliminar estos llamados, existen solo para efectos de prueba
-        console.log(api.obtenerTiempoDistancia(datos.ubicaciones, datos.conexiones));
-        api.dibujarConexiones(datos.ubicaciones, datos.conexiones);
     }
    
     return api;
