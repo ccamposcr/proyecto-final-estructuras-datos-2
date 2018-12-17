@@ -39,10 +39,28 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
         return array;
     };
 
+    let clearMarkers = (markers) => {
+        for (let i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+    };
+
+    let clearLines = (lineas) => {
+        for (let i = 0; i < lineas.length; i++) {
+            lineas[i].setMap(null);
+        }
+    };
+
     api.dibujarConexiones = (ubicaciones, conexiones) => {
         let puntoPartida = {},
             puntoLlegada = {},
-            polyline;
+            polyline = null;
+        
+        clearMarkers(markers);
+        clearLines(lineas);
+
+        lineas = [];
+        markers = [];
 
         for(let i = 0; i < ubicaciones.length; i++){
             markers.push(new google.maps.Marker({
@@ -73,7 +91,6 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
 
             lineas.push(polyline);
         }
-
     };
    
     // Initialize and add the map
