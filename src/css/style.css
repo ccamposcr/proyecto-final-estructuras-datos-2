@@ -94,12 +94,19 @@ circle:nth-of-type(4) {
   /* align-items: center; */
 }
 .contentB {
+  font-family: "Fjalla One", sans-serif;
+  color: white;
   min-height: 100%; /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
 
   position: relative;
   top: 35%;
   align-items: center;
+}
+.contentB h1 {
+  position: relative;
+  font-size: 3.5em;
+  left: 1em;
 }
 
 /* Animaciones */
