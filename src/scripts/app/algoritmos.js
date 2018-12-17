@@ -26,7 +26,7 @@ define([''], () => {
               } else if (!isFinite(avgDistance)) {
                 dist[i][j] = Infinity;
               } else {
-                dist[i][j] = avgDistance;
+                dist[i][j] = graph[i][j];
               }
             }
           }
@@ -63,19 +63,19 @@ define([''], () => {
          * var shortestDists = floydWarshall(distMatrix);
          */
         return (graph) => {
-          dist = init(graph);
+          camino = dist = init(graph);
           let size = graph.length;
           for (let k = 0; k < size; k += 1) {
             for (let i = 0; i < size; i += 1) {
               for (let j = 0; j < size; j += 1) {
-                if (dist[i][j] > dist[i][k] + dist[k][j]) {
-                  dist[i][j] = dist[i][k] + dist[k][j];
-                  camino = '[Tiempo - '+ graph[i][k].tiempo + ' , Distancia - ' + graph[i][k].distancia + '] ----> ' + '[Tiempo - ' + graph[k][j].tiempo + ' , Distancia - ' + graph[k][j].distancia + ']';
+                if (dist[i][j].tiempo * dist[i][j].distancia > dist[i][k].tiempo * dist[i][k].distancia + dist[k][j].tiempo * dist[k][j].distancia) {
+                  dist[i][j] = dist[i][k].distancia * dist[i][k].tiempo + dist[k][j].distancia * dist[k][j].tiempo;
+                  camino[i][j] = dist[i][k] + dist[k][j];
                 }
               }
             }
           }
-          return {"array": dist, "camino": camino};
+          return new Array(dist, camino);
         };
       })();
       
