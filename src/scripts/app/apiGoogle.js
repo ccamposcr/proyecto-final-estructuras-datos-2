@@ -2,39 +2,40 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
 
     let api = {},
         markers = [],
-        map;
+        map,
+        distanceService;
 
     api.obtenerTiempoDistancia = (ubicaciones, conexiones) => {
         let array = [],
             puntoPartida = 0,
-            puntoLlegada = 0;
+            puntoLlegada = 0,
+            distancia,
+            duracion;
 
         for(let j = 0; j < conexiones.length; j++){
             puntoPartida = ubicaciones[conexiones[j][0]].ubicacion;
             puntoLlegada = ubicaciones[conexiones[j][1]].ubicacion;
-            console.log(puntoPartida);
-            console.log(puntoLlegada);
 
-            $.ajax({
-                url: "https://maps.googleapis.com/maps/api/distancematrix/json",
-                method: "GET",
-                data: { 
-                    origins: puntoPartida,
-                    destination: puntoLlegada,
-                    mode: "driving",
-                    key: "AIzaSyAVTOu-bHLsE5PNp1NlVMDQsycnZ1ALlps"
+            distanceService.getDistanceMatrix({
+                origins: [puntoPartida + ', Costa Rica'],
+                destinations: [puntoLlegada + ', Costa Rica'],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                durationInTraffic: true,
+                avoidHighways: false,
+                avoidTolls: false
+            },
+            function (response, status) {
+                if (status !== google.maps.DistanceMatrixStatus.OK) {
+                    console.log('Error:', status);
+                } else {
+                    distancia = response.rows[0].elements[0].distance.value;
+                    duracion = response.rows[0].elements[0].duration.value;
+                    array.push([distancia, duracion]);
                 }
-            })
-            .done(function(data) {
-                console.log('success', data) 
-            })
-            .fail(function(xhr) {
-                console.log('error', xhr);
             });
         }
-        /*return `Ubicación: ${ubicaciones}
-            Conexiones: ${conexiones}`;*/
-         return array;
+        return array;
     };
 
     api.dibujarConexiones = (ubicaciones, conexiones) => {
@@ -59,7 +60,10 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
                     "lng": -84.087502
                 }
            });
-        api.obtenerTiempoDistancia(datos.ubicaciones, datos.conexiones);
+
+        distanceService = new google.maps.DistanceMatrixService();
+        //TODO: Eliminar estos llamados, existen solo para efectos de prueba
+        console.log(api.obtenerTiempoDistancia(datos.ubicaciones, datos.conexiones));
         api.dibujarConexiones(datos.ubicaciones, datos.conexiones);
     }
    
