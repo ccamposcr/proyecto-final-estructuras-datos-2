@@ -2,12 +2,15 @@ define([''], function() {
     let gestor = {};
     const divMapaId = '#';
 
-    let inicializarMapa = () => {
-
-    }
+    let origen = document.getElementById("slOrigen");
+    let destino = document.getElementById("slDestino");
+    let btnBuscarRuta = document.getElementById("btnRuta");
+    let btnBuscar = document.getElementById("btnBuscar");
+    let ipBuscar = document.getElementById("ipBuscar");
 
     gestor.iniciar = () => {
         require(['apiGoogle', 'mapa'], function(api, mapa) {
+            agregarEventos();
             // let tiempoDistanciaList = api.obtenerTiempoDistancia(mapa.datos.ubicaciones, mapa.datos.conexiones);
             // mapa.iniciarMapa(tiempoDistanciaList);
             let tiempoDistancia = [
@@ -36,5 +39,20 @@ define([''], function() {
         });
     }
 
+    let agregarEventos = () => {
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('select[id="slOrigen"]').onchange = (event) => {
+
+            };
+            document.querySelector('select[id="btnBuscar"]').onchange = (event) => {
+
+            };
+
+            document.querySelector('select[id="btnRuta"]').onchange = (event) => {
+
+            };;
+        });
+
+    }
     return gestor;
 })
