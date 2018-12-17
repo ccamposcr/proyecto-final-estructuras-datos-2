@@ -57,7 +57,8 @@ define([""], function() {
             swal({
               title: "Lo sentimos!",
               text: result,
-              icon: "error"
+              icon: "error",
+              html: true
             });
           }
         });

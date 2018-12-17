@@ -76,7 +76,7 @@ define(["datos", "hashing", "clases", "algoritmos"], function(
   let buscarUbicacion = ubicacion => {
     return hash.obtener(ubicacion) != ""
       ? hash.obtener(ubicacion)
-      : "No existe la ubicación ingresada";
+      : `Ubicación ${ubicacion} ingresada no existe `;
   };
 
   mapa.iniciarMapa = tiempoDistanciaList => {
