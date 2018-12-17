@@ -1,4 +1,4 @@
-define(['googleMaps', 'datos', 'jquery'], (googleMaps, datos, jquery) => {
+define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
 
     let api = {},
         markers = [],
@@ -14,6 +14,23 @@ define(['googleMaps', 'datos', 'jquery'], (googleMaps, datos, jquery) => {
             puntoLlegada = ubicaciones[conexiones[j][1]].ubicacion;
             console.log(puntoPartida);
             console.log(puntoLlegada);
+
+            jQuery.ajax({
+                url: "https://maps.googleapis.com/maps/api/distancematrix/json",
+                method: "GET",
+                data: { 
+                    origins: puntoPartida,
+                    destination: puntoLlegada,
+                    mode: "driving",
+                    key: "AIzaSyAVTOu-bHLsE5PNp1NlVMDQsycnZ1ALlps"
+                }
+            })
+            .done(function(data) {
+                console.log('success', data) 
+            })
+            .fail(function(xhr) {
+                console.log('error', xhr);
+            });
         }
         /*return `Ubicación: ${ubicaciones}
             Conexiones: ${conexiones}`;*/
