@@ -64,7 +64,7 @@ define([
     }
 
     let buscarUbicacion = (ubicacion) => {
-        return hash.obtener(ubicacion);
+        return hash.obtener(ubicacion) != '' ? hash.obtener(ubicacion) : 'No existe la ubicación ingresada';
     };
 
     mapa.iniciarMapa = (tiempoDistanciaList) => {

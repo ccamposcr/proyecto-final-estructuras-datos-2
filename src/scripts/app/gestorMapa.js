@@ -39,7 +39,14 @@ define([''], function() {
 
         btnBuscar.addEventListener('click', () => {
             if (origen.value != '') {
-
+                require(['mapa', "sweet"], function(mapa) {
+                    swal({
+                        title: 'Título',
+                        text: 'Mensaje de texto',
+                        html: getHtmlAlert(mapa.buscarPorUbicacion(ipBuscar.value)),
+                        type: 'success'
+                    });
+                });
             }
         });
 
@@ -63,6 +70,16 @@ define([''], function() {
                 }
             });
         });
+    }
+
+    let getHtmlAlert = (nodo) => {
+        return `<div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">Ubicacion ${nodo.ubicacion}</h5>
+                    <p class="card-text"><strong>Latitud: </strong>${nodo.latitud}</p>
+                    <p class="card-text"><strong>Longitud: </strong>${nodo.longitud}</p>
+                    </div>
+                </div>`;
     }
     return gestor;
 })
