@@ -94,7 +94,6 @@ circle:nth-of-type(4) {
   /* align-items: center; */
 }
 .contentB {
-  font-family: "Fjalla One", sans-serif;
   color: white;
   min-height: 100%; /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
@@ -110,6 +109,10 @@ circle:nth-of-type(4) {
   left: 1em;
 }
 
+.contentB h1,
+input:not(#ipBuscar) {
+  font-family: "Fjalla One", sans-serif;
+}
 /* Animaciones */
 
 .animated {
