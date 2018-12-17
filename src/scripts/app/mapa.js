@@ -19,10 +19,9 @@ define([
 
             if (arcos[idUbicacion][i] != Infinity) {
                 adyacentes.push(getDatoEnFormato(
-                    i,
                     `Destino: ${datos.ubicaciones[i]}`,
                     arcos[idUbicacion][i].tiempo,
-                    arcos[idUbicacion][i].distancia));
+                    arcos[idUbicacion][i].distancia, i));
             }
         }
         return {
