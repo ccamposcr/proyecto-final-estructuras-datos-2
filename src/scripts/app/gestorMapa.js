@@ -10,6 +10,7 @@ define([""], function() {
   let modal = document.getElementById("modalBusqueda");
   let loader = document.getElementById("loader");
   let content = document.getElementById("contenido");
+  let divresult = document.getElementById("resultadoBusqueda");
 
   gestor.iniciar = () => {
     require(["apiGoogle", "mapa", "datos"], function(api, mapa, datos) {
@@ -68,11 +69,13 @@ define([""], function() {
         if (origen.value == -1) {
           // mostrar todas las rutas
           api.dibujarConexiones(mapa.datos.ubicaciones, mapa.datos.conexiones);
+          divresult.innerHTML = "";
         } else {
           if (destino.value == -1) {
             // mostrar todas las adyacencias
             let resultAdy = mapa.buscarAdyacentes(origen.value);
             api.dibujarConexiones(mapa.datos.ubicaciones, resultAdy.Conexiones);
+            getHtmlResultAdya(resultAdy.adyacentes);
           } else {
             // busca el camino minimo
             //console.log(mapa.caminoMinimo(origen.value, destino.value));
@@ -84,7 +87,6 @@ define([""], function() {
   };
 
   let getHtmlAlert = nodo => {
-    console.log(nodo);
     let result = `<div class="card">
                     <div class="card-body">
                     <h5 class="card-title">Ubicación: ${nodo[0].ubicacion}</h5>
@@ -96,8 +98,44 @@ define([""], function() {
                     }</p>
                     </div>
                 </div>`;
-    document.getElementById("modalBusqueda").innerHTML = result;
+    modal.innerHTML = result;
     return modal;
+  };
+
+  let getHtmlResultAdya = adyacencias => {
+    console.log(adyacencias);
+    let result = `
+    <a href="#" id="btnClose" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <br />
+    <table class="table table-hover animated fast fadeIn">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ubicación</th>
+                        <th scope="col">Latitud</th>
+                        <th scope="col">Longuitud</th>
+                        <th scope="col">Tiempo</th>
+                        <th scope="col">Distancia</th>
+                      </tr>
+                    </thead>
+                    <tbody>`;
+    for (const adyacencia of adyacencias) {
+      result += `
+        <tr>
+          <th scope="row">${adyacencia.id}</th>
+          <td>${adyacencia.Ubicación.ubicacion}</td>
+          <td>${adyacencia.Ubicación.latitud}</td>
+          <td>${adyacencia.Ubicación.longitud}</td>
+          <td>${adyacencia.Tiempo}</td>
+          <td>${adyacencia.Distancia}</td>
+        </tr>
+      `;
+    }
+    result += ` </tbody> </table>`;
+    divresult.innerHTML = result;
+    document.getElementById("btnClose").addEventListener("click", () => {
+      divresult.innerHTML = "";
+    });
   };
   return gestor;
 });

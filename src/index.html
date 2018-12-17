@@ -16,30 +16,35 @@
 
   <body>
     <div id="contenido" hidden>
-      <div class="jumbotron" id="backgroundBusqueda">
-        <div class="row text-center">
-          <div class="col-md-12 ">
-            <h1>¿Qué ubicación desea buscar?</h1>
-            <br />
+      <div class="jumbotron vertical-center" id="backgroundBusqueda">
+        <div class="contentB">
+          <div class="row text-center">
+            <div class="col-md-12 ">
+              <h1>¿Qué ubicación desea buscar?</h1>
+              <br />
+            </div>
+            <div class="hiden" id="modalBusqueda"></div>
           </div>
-          <div class="hiden" id="modalBusqueda"></div>
-        </div>
-        <div class="row justify-content-between">
-          <div class="col-md-4"></div>
-          <div class="col-md-4 ">
-            <input type="text" class="form-control" id="ipBuscar" />
-          </div>
+          <div class="row justify-content-between">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 ">
+              <input type="text" class="form-control" id="ipBuscar" />
+            </div>
 
-          <div class="col-md-4">
-            <input
-              type="button"
-              class="btn btn-primary"
-              id="btnBuscar"
-              value="Buscar"
-            />
+            <div class="col-md-4">
+              <input
+                type="button"
+                class="btn btn-primary"
+                id="btnBuscar"
+                value="Buscar"
+              />
+            </div>
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
       <div class="card container">
         <br />
         <div class="container">
@@ -89,6 +94,11 @@
               </div>
             </div>
           </form>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12" id="resultadoBusqueda"></div>
+          </div>
         </div>
         <br />
         <div class="container"><div id="map"></div></div>
