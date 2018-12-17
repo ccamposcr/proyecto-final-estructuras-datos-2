@@ -80,7 +80,7 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
     api.initMap = () => {
         map = new google.maps.Map(
             document.getElementById('map'), {
-                    zoom: 8,
+                    zoom: 9,
                center: {
                     "lat": 9.934739,
                     "lng": -84.087502
