@@ -32,27 +32,41 @@ define([''], function() {
             ];
             api.initMap();
             mapa.iniciarMapa(tiempoDistancia);
-            console.table(mapa.buscarAdyacentes('Limon'));
-
-            console.log(`La busqueda fue exitosa: 
-                ${mapa.buscarPorUbicacion('Limon').toString()}`);
+            console.log(mapa.buscarAdyacentes('Limon'))
         });
     }
 
     let agregarEventos = () => {
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('select[id="slOrigen"]').onchange = (event) => {
-                // document.getElementById("").classList
-            };
-            document.querySelector('select[id="btnBuscar"]').onchange = (event) => {
-
-            };
-
-            document.querySelector('select[id="btnRuta"]').onchange = (event) => {
-
-            };;
+        origen.addEventListener('change', () => {
+            if (origen.value != -1) {
+                destino.removeAttribute('disabled');
+            } else {
+                if (destino.getAttribute("disabled") == null) {
+                    destino.setAttribute('disabled', 'disabled');
+                    destino.value = -1;
+                }
+            }
         });
 
+        btnBuscarRuta.addEventListener('click', () => {
+            require(['apiGoogle', 'mapa'], function(api, mapa) {
+                if (origen.value == -1) {
+                    // mostrar todas las rutas
+                    api.initMap();
+                } else {
+                    if (destino.value == -1) {
+                        // mostrar todas las adyacencias
+                        let resultAdy = mapa.buscarAdyacentes(origen.value);
+                        api.dibujarConexiones(mapa.datos.ubicaciones, resultAdy.Conexiones);
+
+                    } else {
+                        // busca el camino minimo
+
+                        //api.dibujarCaminoMinimo(mapa.caminoMinimo(origen.value, destino.value););
+                    }
+                }
+            });
+        });
     }
     return gestor;
 })
