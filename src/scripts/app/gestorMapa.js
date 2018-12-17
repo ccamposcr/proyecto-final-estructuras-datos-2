@@ -21,6 +21,8 @@ define([''], function() {
                 ${mapa.buscarPorUbicacion('Limon').toString()}`);
             
                 api.dibujarConexiones(datos.ubicaciones, datos.conexiones);
+
+                console.log(mapa.caminoMinimo("Limon", "San Jose"));
             });
         });
     }
@@ -50,7 +52,7 @@ define([''], function() {
 
                     } else {
                         // busca el camino minimo
-
+                        //console.log(mapa.caminoMinimo(origen.value, destino.value));
                         //api.dibujarCaminoMinimo(mapa.caminoMinimo(origen.value, destino.value););
                     }
                 }

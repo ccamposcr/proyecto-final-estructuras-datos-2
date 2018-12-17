@@ -72,7 +72,6 @@ define([
         arcos = datos.iniciar(tiempoDistanciaList);
         hash = new Hashing(datos.ubicaciones, "ubicacion");
         console.log(hash);
-        buscarCaminoMinimo('Limon', 'Cartago');
     };
 
     mapa.caminoMinimo = buscarCaminoMinimo;
