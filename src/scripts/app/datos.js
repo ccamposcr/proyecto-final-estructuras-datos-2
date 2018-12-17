@@ -51,5 +51,6 @@ define(['clases'], () => {
 
     datos.ubicaciones = ubicaciones;
     datos.conexiones = conexiones;
+    datos.arcos = arcos;
     return datos;
 });

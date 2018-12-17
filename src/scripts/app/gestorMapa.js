@@ -66,7 +66,7 @@ define([""], function() {
     });
 
     btnBuscarRuta.addEventListener("click", () => {
-      require(["apiGoogle", "mapa"], function(api, mapa) {
+      require(["apiGoogle", "mapa", "datos"], function(api, mapa, datos) {
         if (origen.value == -1) {
           // mostrar todas las rutas
           api.dibujarConexiones(mapa.datos.ubicaciones, mapa.datos.conexiones);
@@ -79,7 +79,8 @@ define([""], function() {
             getHtmlResultAdya(resultAdy.adyacentes);
           } else {
             // busca el camino minimo
-            //console.log(mapa.caminoMinimo(origen.value, destino.value));
+            let caminoMinimo = mapa.caminoMinimo(origen.value, destino.value);
+            divresult.innerHTML = ( caminoMinimo != Infinity && caminoMinimo != 0 ) ? ('Camino minimo -> Tiempo: '+caminoMinimo.tiempo + ' - Distancia: '+caminoMinimo.distancia) : 'No hay camino'; 
             //api.dibujarCaminoMinimo(mapa.caminoMinimo(origen.value, destino.value););
           }
         }

@@ -5,7 +5,6 @@ define([''], () => {
          * Matrix used for the algorithm.
          */
         let dist;
-        let camino;
         /**
          * Initialize the distance matrix.
          *
@@ -63,19 +62,18 @@ define([''], () => {
          * var shortestDists = floydWarshall(distMatrix);
          */
         return (graph) => {
-          camino = dist = init(graph);
+          dist = init(graph);
           let size = graph.length;
           for (let k = 0; k < size; k += 1) {
             for (let i = 0; i < size; i += 1) {
               for (let j = 0; j < size; j += 1) {
                 if (dist[i][j].tiempo * dist[i][j].distancia > dist[i][k].tiempo * dist[i][k].distancia + dist[k][j].tiempo * dist[k][j].distancia) {
                   dist[i][j] = dist[i][k].distancia * dist[i][k].tiempo + dist[k][j].distancia * dist[k][j].tiempo;
-                  camino[i][j] = dist[i][k] + dist[k][j];
                 }
               }
             }
           }
-          return new Array(dist, camino);
+          return dist;
         };
       })();
       
