@@ -61,20 +61,31 @@ define(["datos", "hashing", "clases", "algoritmos"], function(
 
   let buscarCaminoMinimo = (origen, destino) => {
     let verticeOrigen = datos.ubicaciones.findIndex(k => k.ubicacion == origen);
-    let verticeDestino = datos.ubicaciones.findIndex(k => k.ubicacion == destino);
-    let array = [];
+    let verticeDestino = datos.ubicaciones.findIndex(
+      k => k.ubicacion == destino
+    );
 
-    let caminosMinimos = algoritmos.floydWarshall(arcos);
+    let obj = algoritmos.floydWarshall(arcos);
+    let caminosMinimos = obj.array;
+    let camino = obj.camino;
     if (verticeOrigen >= 0 && verticeDestino >= 0) {
-      array = caminosMinimos[verticeOrigen][verticeDestino];
+      console.log(
+        "Camino minimo de " +
+          origen +
+          " a " +
+          destino +
+          " ==> " +
+          camino +
+          " Valor del Camino = " +
+          caminosMinimos[verticeOrigen][verticeDestino]
+      );
     }
-    return array;
   };
 
   let buscarUbicacion = ubicacion => {
     return hash.obtener(ubicacion) != ""
       ? hash.obtener(ubicacion)
-      : `Ubicación ${ubicacion} ingresada no existe `;
+      : "No existe la ubicación ingresada";
   };
 
   mapa.iniciarMapa = tiempoDistanciaList => {

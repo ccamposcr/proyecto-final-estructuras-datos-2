@@ -80,7 +80,14 @@ define([""], function() {
           } else {
             // busca el camino minimo
             let caminoMinimo = mapa.caminoMinimo(origen.value, destino.value);
-            divresult.innerHTML = ( caminoMinimo != Infinity && caminoMinimo != 0 ) ? ('Camino minimo -> Tiempo: '+caminoMinimo.tiempo + ' - Distancia: '+caminoMinimo.distancia) : 'No hay camino'; 
+            console.log(caminoMinimo);
+            divresult.innerHTML =
+              caminoMinimo != Infinity && caminoMinimo != 0
+                ? "Camino minimo -> Tiempo: " +
+                  caminoMinimo.tiempo +
+                  " - Distancia: " +
+                  caminoMinimo.distancia
+                : "No hay camino";
             //api.dibujarCaminoMinimo(mapa.caminoMinimo(origen.value, destino.value););
           }
         }
