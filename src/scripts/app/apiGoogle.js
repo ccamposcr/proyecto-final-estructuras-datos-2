@@ -15,7 +15,7 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
             console.log(puntoPartida);
             console.log(puntoLlegada);
 
-            jQuery.ajax({
+            $.ajax({
                 url: "https://maps.googleapis.com/maps/api/distancematrix/json",
                 method: "GET",
                 data: { 
