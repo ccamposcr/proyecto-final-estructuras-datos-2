@@ -19,7 +19,7 @@ define([''], function() {
 
                 console.log(`La busqueda fue exitosa: 
                 ${mapa.buscarPorUbicacion('Limon').toString()}`);
-            
+
                 api.dibujarConexiones(datos.ubicaciones, datos.conexiones);
             });
         });
@@ -37,6 +37,12 @@ define([''], function() {
             }
         });
 
+        btnBuscar.addEventListener('click', () => {
+            if (origen.value != '') {
+
+            }
+        });
+
         btnBuscarRuta.addEventListener('click', () => {
             require(['apiGoogle', 'mapa'], function(api, mapa) {
                 if (origen.value == -1) {
@@ -46,6 +52,7 @@ define([''], function() {
                     if (destino.value == -1) {
                         // mostrar todas las adyacencias
                         let resultAdy = mapa.buscarAdyacentes(origen.value);
+                        console.log(resultAdy.Conexiones);
                         api.dibujarConexiones(mapa.datos.ubicaciones, resultAdy.Conexiones);
 
                     } else {
