@@ -2,6 +2,7 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
 
     let api = {},
         markers = [],
+        lineas = [],
         map,
         distanceService;
 
@@ -39,6 +40,10 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
     };
 
     api.dibujarConexiones = (ubicaciones, conexiones) => {
+        let puntoPartida = {},
+            puntoLlegada = {},
+            polyline;
+
         for(let i = 0; i < ubicaciones.length; i++){
             markers.push(new google.maps.Marker({
                 position: {
@@ -48,6 +53,27 @@ define(['googleMaps', 'datos', 'jQuery'], (googleMaps, datos, jQuery) => {
                 map: map
             }));
         }
+
+        for(let j = 0; j < conexiones.length; j++){
+            puntoPartida.latitud = ubicaciones[conexiones[j][0]].latitud;
+            puntoPartida.longitud = ubicaciones[conexiones[j][0]].longitud;
+            puntoLlegada.latitud = ubicaciones[conexiones[j][1]].latitud;
+            puntoLlegada.longitud = ubicaciones[conexiones[j][1]].longitud;
+
+            polyline = new google.maps.Polyline({
+                path: [
+                    new google.maps.LatLng(puntoPartida.latitud, puntoPartida.longitud), 
+                    new google.maps.LatLng(puntoLlegada.latitud, puntoLlegada.longitud)
+                ],
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 2,
+                map: map
+            });
+
+            lineas.push(polyline);
+        }
+
     };
    
     // Initialize and add the map
