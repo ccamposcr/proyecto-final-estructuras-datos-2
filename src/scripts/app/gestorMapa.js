@@ -42,7 +42,7 @@ define([''], function() {
     let agregarEventos = () => {
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('select[id="slOrigen"]').onchange = (event) => {
-
+                // document.getElementById("").classList
             };
             document.querySelector('select[id="btnBuscar"]').onchange = (event) => {
 
