@@ -1,11 +1,11 @@
 define(['clases'], () => {
     let datos = {}
     let ubicaciones = [
-        new Nodo('San Jose', 9.928069,-84.090729),
-        new Nodo('Limon', 9.975080,-83.061000),
-        new Nodo('Guanacaste', 10.473270,-85.372650),
+        new Nodo('San Jose', 9.928069, -84.090729),
+        new Nodo('Limon', 9.975080, -83.061000),
+        new Nodo('Guanacaste', 10.473270, -85.372650),
         new Nodo('Alajuela', 10.018770, -84.210190),
-        new Nodo('Cartago', 9.830860,-83.868698),
+        new Nodo('Cartago', 9.830860, -83.868698),
         new Nodo('Heredia', 9.998910, -84.116478),
         new Nodo('Puntarenas', 9.977420, -84.833740)
     ];
@@ -41,12 +41,6 @@ define(['clases'], () => {
     }
 
     let inicializarArcos = () => {
-        // arcos = (new Array(ubicaciones.length)).fill((new Array(ubicaciones.length)).fill(undefined));
-        // arcos = [].fill.call({ length: ubicaciones.length }, []);
-        // console.log(arcos);
-        // for (let i = 0; i < arcos.length; i++) {
-        //     arcos[i].fill.call({ length: ubicaciones.length }, Infinity);
-        // }
         for (let x = 0; x < ubicaciones.length; x++) {
             arcos[x] = [];
             for (let y = 0; y < ubicaciones.length; y++) {
