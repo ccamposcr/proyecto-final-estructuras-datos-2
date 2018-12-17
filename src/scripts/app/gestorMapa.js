@@ -87,7 +87,7 @@ define([""], function() {
     console.log(nodo);
     let result = `<div class="card">
                     <div class="card-body">
-                    <h5 class="card-title">Ubicacion: ${nodo[0].ubicacion}</h5>
+                    <h5 class="card-title">Ubicación: ${nodo[0].ubicacion}</h5>
                     <p class="card-text"><strong>Latitud: </strong>${
                       nodo[0].latitud
                     }</p>
@@ -96,7 +96,7 @@ define([""], function() {
                     }</p>
                     </div>
                 </div>`;
-    document.getElementById("modalBusqueda").innerHTML += result;
+    document.getElementById("modalBusqueda").innerHTML = result;
     return modal;
   };
   return gestor;

@@ -16,9 +16,9 @@
 
   <body>
     <div id="contenido" hidden>
-      <div class="jumbotron">
+      <div class="jumbotron" id="backgroundBusqueda">
         <div class="row text-center">
-          <div class="col-md-12">
+          <div class="col-md-12 ">
             <h1>¿Qué ubicación desea buscar?</h1>
             <br />
           </div>
@@ -40,56 +40,60 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <form>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="slOrigen">Origen</label>
-                <select class="form-control" id="slOrigen">
-                  <option value="-1">Todas las ubicaciones</option>
-                  <option value="San Jose">San José</option>
-                  <option value="Limon">Limón</option>
-                  <option value="Guanacaste">Guanacaste</option>
-                  <option value="Alajuela">Alajuela</option>
-                  <option value="Cartago">Cartago</option>
-                  <option value="Heredia">Heredia</option>
-                  <option value="Puntarenas">Puntarenas</option>
-                </select>
+      <div class="card container">
+        <br />
+        <div class="container">
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="slOrigen">Origen</label>
+                  <select class="form-control" id="slOrigen">
+                    <option value="-1">Todas las ubicaciones</option>
+                    <option value="San Jose">San José</option>
+                    <option value="Limon">Limón</option>
+                    <option value="Guanacaste">Guanacaste</option>
+                    <option value="Alajuela">Alajuela</option>
+                    <option value="Cartago">Cartago</option>
+                    <option value="Heredia">Heredia</option>
+                    <option value="Puntarenas">Puntarenas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group ">
+                  <label for="slDestino">Destino</label>
+                  <select class="form-control " id="slDestino" disabled>
+                    <option value="-1">Todas las ubicaciones</option>
+                    <option value="San Jose">San José</option>
+                    <option value="Limon">Limón</option>
+                    <option value="Guanacaste">Guanacaste</option>
+                    <option value="Alajuela">Alajuela</option>
+                    <option value="Cartago">Cartago</option>
+                    <option value="Heredia">Heredia</option>
+                    <option value="Puntarenas">Puntarenas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="slDestino"> . </label>
+                  <button
+                    type="button"
+                    id="btnRuta"
+                    class="btn btn-primary btn-block"
+                  >
+                    Buscar ruta
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="form-group ">
-                <label for="slDestino">Destino</label>
-                <select class="form-control " id="slDestino" disabled>
-                  <option value="-1">Todas las ubicaciones</option>
-                  <option value="San Jose">San José</option>
-                  <option value="Limon">Limón</option>
-                  <option value="Guanacaste">Guanacaste</option>
-                  <option value="Alajuela">Alajuela</option>
-                  <option value="Cartago">Cartago</option>
-                  <option value="Heredia">Heredia</option>
-                  <option value="Puntarenas">Puntarenas</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="slDestino"> . </label>
-                <button
-                  type="button"
-                  id="btnRuta"
-                  class="btn btn-primary btn-block"
-                >
-                  Buscar ruta
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
+        <br />
+        <div class="container"><div id="map"></div></div>
+        <br />
       </div>
-      <br />
-      <div id="map"></div>
     </div>
 
     <div class="containert" id="loader">
