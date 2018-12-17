@@ -47,8 +47,6 @@ define([
         }
     }
 
-    let buscarCaminoMaximo = () => {};
-
     let buscarUbicacion = (ubicacion) => {
         return hash.obtener(ubicacion);
     };
@@ -61,7 +59,6 @@ define([
     };
 
     mapa.caminoMinimo = buscarCaminoMinimo;
-    mapa.caminoMaximo = buscarCaminoMaximo;
     mapa.buscarPorUbicacion = buscarUbicacion;
     mapa.buscarAdyacentes = buscarAdyacentes;
     mapa.datos = datos;
