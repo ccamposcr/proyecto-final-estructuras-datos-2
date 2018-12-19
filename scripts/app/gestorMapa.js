@@ -13,7 +13,6 @@ define([""], function() {
   let divresult = document.getElementById("resultadoBusqueda");
 
   gestor.iniciar = () => {
-    alert('he cambiado');
     require(["apiGoogle", "mapa", "datos"], function(api, mapa, datos) {
       api.initMap();
       agregarEventos();
